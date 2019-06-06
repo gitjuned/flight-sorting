@@ -24,11 +24,11 @@ var data =
         price: 3400,
 
     },
-    
+
 ]
 
 console.log("Array of Overall Data");
-console.log(+data);
+console.log(data);
 
 
 
@@ -43,6 +43,8 @@ console.log(airIndiaFlights);
 var indigoFlights = data.filter(item => item.name == "Indigo");
 console.log("Indigo Flights");
 console.log(indigoFlights);
+
+
 // var jet2 = data.filter(function (item) {
 // 	return item.name == "jet";
 // });

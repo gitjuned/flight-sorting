@@ -10,7 +10,99 @@
     <title>Flight Filtering</title>
 </head>
 <body>
+    <!-- FILTERS -->
+<div class="container">
+    <div class="filters">
+        <div class="row">
+
+            <div class="col-sm-4">
+                <div class="checkboxes sort-by-name">
+                        <label>SORT BY NAME</label>
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="JetAirways" value="Jet Airways">
+                        <label class="form-check-label" for="JetAirways">Jet Airways</label>
+                    </div>
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="AirIndia" value="Air India">
+                        <label class="form-check-label" for="AirIndia">Air India</label>
+                    </div>
+                    <div>
+                        <input class="form-check-input" type="checkbox" id="Indigo" value="Indigo">
+                        <label class="form-check-label" for="Indigo">Indigo </label>
+                    </div>
+                </div>
+            </div>
     
+            <div class="col-sm-4">
+                <div class="sort-by-price">
+                    <form>
+                        <div class="form-group">
+                            <label for="price">SORT BY PRICE</label>
+                            <input class="form-control" id="price" placeholder="Price">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sort</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="sort-by-duration">
+                    <form>
+                        <div class="form-group">
+                            <label for="duration">SORT BY DURATION</label>
+                            <input class="form-control" id="duration" placeholder="Duration in Mins">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sort</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- HEADING -->
+<div class="container">
+    <div class="heading">
+        <div class="row">
+
+            <div class="col-sm-4">
+                <div class="name">
+                    <h3>NAME</h3>
+                </div>
+
+            </div>
+
+            <div class="col-sm-4">
+                <div class="duratiom">
+                    <h3>DURATION</h3>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="price">
+                    <h3>PRICE</h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- DATA -->
+<div class="container">
+    <div class="data">
+        
+    </div>
+</div>        
+
+    
+
+    
+
+
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
