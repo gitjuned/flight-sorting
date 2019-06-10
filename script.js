@@ -1,3 +1,4 @@
+$(function() {
 var data =
 [
     {
@@ -56,7 +57,7 @@ var totalCheckedFlights = [];
 var totalUnCheckedFlights = [];
 var airlineSelected = [];
 var checkedFlight;
-var filteredData=[];
+
 
 $('input:checkbox').click(function(){
     $("#result").html("");
@@ -64,7 +65,7 @@ $('input:checkbox').click(function(){
 
         if ($(this).prop('checked') == true){
             checkedFlight = $(this).val();
-            filteredData = data.filter(function (item) {
+            var filteredData = data.filter(function (item) {
                 return item.name == checkedFlight;
             });
             console.log("filtered data goes here");
@@ -93,34 +94,22 @@ $('input:checkbox').click(function(){
                     '</div>'    
                 )
             }
-
         }
         else{
             console.log("else block");
             console.log($(this).val());
-
-            // filteredData = data.filter(function (item) {
-            //     return item;
-            // });
-            // console.log(filteredData);
-            
         }
-
-
         if(($("input:checkbox:checked").length === 0)){
-            console.log("all unchecked");
+            console.log("all unchecked block");
             appendData();
             return false;
-
         }
-    }); 
-
-    
-    
+    });   
 });
 
 
 function appendData(){
+    $("#result").empty();
     for(let i=0;i<data.length;i++){
 
         $("#result").append(
@@ -149,6 +138,60 @@ function appendData(){
 }
 
 appendData();
+
+
+function sortByTime(){
+    $("#result").empty();
+    if(!$("#duration").val()){
+        console.log("empty")
+        appendData();
+    }
+    else{
+        console.log("else block");
+        var time = $("#duration").val();
+        console.log(time);
+        var filteredData = data.filter(function (item) {
+            return item.duration >= time;
+        });
+        for(let i=0;i<filteredData.length;i++){
+            $("#result").append(
+                '<div class="row flight-data-row">'+
+    
+                    '<div class="col-sm-4"> '+
+                        '<div class="flight-name">'+
+                            '<p>'+filteredData[i].name+'</p>'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="col-sm-4"> '+
+                        '<div class="flight-duration">'+
+                            '<p>'+filteredData[i].duration+'</p>'+
+                        '</div>'+
+                    '</div>'+
+                    '<div class="col-sm-4"> '+
+                        '<div class="flight-price">'+
+                            '<p>'+filteredData[i].price+'</p>'+
+                        '</div>'+
+                    '</div>'+
+    
+                '</div>'    
+            )
+        }
+        console.log(filteredData);
+    } 
+}
+
+$( "#duration" ).keyup(function(){
+    if(($(this).val()) == ""){
+        console.log("hey there");
+        appendData();
+    }
+});
+
+
+$('.duration-btn').click(function(){
+    sortByTime();
+});
+
  
 // var jetFlights = data.filter(item => item.name == "Jet Airways");
 // console.log("Jet Airways Flights");
@@ -167,3 +210,4 @@ appendData();
 // 	return item.name == "Jet Airways";
 // });
 // console.log(jet2);
+});

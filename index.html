@@ -35,27 +35,24 @@
     
             <div class="col-sm-4">
                 <div class="sort-by-duration">
-                    <form>
-                        <div class="form-group">
-                            <label for="duration">SORT BY DURATION</label>
-                            <input class="form-control" id="duration" placeholder="Duration in Mins">
-                        </div>
-                        <button type="submit" class="btn btn-primary">SORT</button>
-                    </form>
+                    <div class="form-group">
+                        <label for="duration">SORT BY DURATION</label>
+                        <input type="number" class="form-control" id="duration" placeholder="Mins ( Numeric Values Only )">
+                    </div>
+                    <button type="submit" class="btn btn-primary duration-btn">SORT</button>  
                 </div> 
             </div>
 
             <div class="col-sm-4">
-                <div class="sort-by-price">
-                    <form>
-                        <div class="form-group">
-                            <label for="price">SORT BY PRICE</label>
-                            <input class="form-control" id="price" placeholder="Price">
-                        </div>
-                        <button type="submit" class="btn btn-primary">SORT</button>
-                    </form>
+                <div class="sort-by-price">                    
+                    <div class="form-group">
+                        <label for="price">SORT BY PRICE</label>
+                        <input type="number" class="form-control" id="price" placeholder="Price ( Numeric Values Only )">
+                    </div>
+                    <button type="submit" class="btn btn-primary price-btn">SORT</button>
                 </div>
             </div>
+
 
         </div>
     </div>
