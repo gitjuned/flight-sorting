@@ -140,7 +140,6 @@ function appendData(){
     }
 }
 
-
 appendData();
  
 // var jetFlights = data.filter(item => item.name == "Jet Airways");
