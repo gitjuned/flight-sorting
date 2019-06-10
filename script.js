@@ -51,12 +51,44 @@ var data =
     },
 ]
 
+function appendData(){
+    console.log("inside iffi");
+    $("#result").empty();
+    for(let i=0;i<data.length;i++){
+
+        $("#result").append(
+
+            '<div class="row flight-data-row">'+
+
+                '<div class="col-sm-4"> '+
+                    '<div class="flight-name">'+
+                        '<p>'+data[i].name+'</p>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="col-sm-4"> '+
+                    '<div class="flight-duration">'+
+                        '<p>'+data[i].duration+'</p>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="col-sm-4"> '+
+                    '<div class="flight-price">'+
+                        '<p>'+data[i].price+'</p>'+
+                    '</div>'+
+                '</div>'+
+
+            '</div>'    
+        )
+    }
+};
+
+appendData();
 
 var tempArray = [];
 var totalCheckedFlights = [];
 var totalUnCheckedFlights = [];
 var airlineSelected = [];
 var checkedFlight;
+
 
 
 $('input:checkbox').click(function(){
@@ -108,106 +140,89 @@ $('input:checkbox').click(function(){
 });
 
 
-function appendData(){
+function sortByTime(){
     $("#result").empty();
-    for(let i=0;i<data.length;i++){
-
+    console.log("else block");
+    var time = $("#duration").val();
+    console.log(time);
+    var filteredData = data.filter(function (item) {
+        return item.duration >= time;
+    });
+    for(let i=0;i<filteredData.length;i++){
         $("#result").append(
-
             '<div class="row flight-data-row">'+
 
                 '<div class="col-sm-4"> '+
                     '<div class="flight-name">'+
-                        '<p>'+data[i].name+'</p>'+
+                        '<p>'+filteredData[i].name+'</p>'+
                     '</div>'+
                 '</div>'+
                 '<div class="col-sm-4"> '+
                     '<div class="flight-duration">'+
-                        '<p>'+data[i].duration+'</p>'+
+                        '<p>'+filteredData[i].duration+'</p>'+
                     '</div>'+
                 '</div>'+
                 '<div class="col-sm-4"> '+
                     '<div class="flight-price">'+
-                        '<p>'+data[i].price+'</p>'+
+                        '<p>'+filteredData[i].price+'</p>'+
                     '</div>'+
                 '</div>'+
 
             '</div>'    
         )
     }
+    console.log(filteredData);  
 }
 
-appendData();
 
-
-function sortByTime(){
-    $("#result").empty();
-    if(!$("#duration").val()){
-        console.log("empty")
-        appendData();
-    }
-    else{
-        console.log("else block");
-        var time = $("#duration").val();
-        console.log(time);
-        var filteredData = data.filter(function (item) {
-            return item.duration >= time;
-        });
-        for(let i=0;i<filteredData.length;i++){
-            $("#result").append(
-                '<div class="row flight-data-row">'+
-    
-                    '<div class="col-sm-4"> '+
-                        '<div class="flight-name">'+
-                            '<p>'+filteredData[i].name+'</p>'+
-                        '</div>'+
-                    '</div>'+
-                    '<div class="col-sm-4"> '+
-                        '<div class="flight-duration">'+
-                            '<p>'+filteredData[i].duration+'</p>'+
-                        '</div>'+
-                    '</div>'+
-                    '<div class="col-sm-4"> '+
-                        '<div class="flight-price">'+
-                            '<p>'+filteredData[i].price+'</p>'+
-                        '</div>'+
-                    '</div>'+
-    
-                '</div>'    
-            )
-        }
-        console.log(filteredData);
-    } 
-}
-
-$( "#duration" ).keyup(function(){
+$("#duration").keyup(function(){
     if(($(this).val()) == ""){
         console.log("hey there");
         appendData();
     }
 });
 
-
 $('.duration-btn').click(function(){
     sortByTime();
 });
 
- 
-// var jetFlights = data.filter(item => item.name == "Jet Airways");
-// console.log("Jet Airways Flights");
-// console.log(jetFlights);
 
-// var airIndiaFlights = data.filter(item => item.name == "Air India");
-// console.log("Air India Flights");
-// console.log(airIndiaFlights);
+function sortByPrice(){
+    $("#result").empty();
+    var price = $("#price").val();
+    console.log(price);
+    var filteredData = data.filter(function (item) {
+        return item.price >= price;
+    });
+    for(let i=0;i<filteredData.length;i++){
+        $("#result").append(
+            '<div class="row flight-data-row">'+
 
-// var indigoFlights = data.filter(item => item.name == "Indigo");
-// console.log("Indigo Flights");
-// console.log(indigoFlights);
+                '<div class="col-sm-4"> '+
+                    '<div class="flight-name">'+
+                        '<p>'+filteredData[i].name+'</p>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="col-sm-4"> '+
+                    '<div class="flight-duration">'+
+                        '<p>'+filteredData[i].duration+'</p>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="col-sm-4"> '+
+                    '<div class="flight-price">'+
+                        '<p>'+filteredData[i].price+'</p>'+
+                    '</div>'+
+                '</div>'+
 
+            '</div>'    
+        )
+    }
+    console.log(filteredData);  
+}
 
-// var jet2 = data.filter(function (item) {
-// 	return item.name == "Jet Airways";
-// });
-// console.log(jet2);
+$('.price-btn').click(function(){
+    sortByPrice();
 });
+
+
+}); // DOCUMENT READY
