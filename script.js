@@ -64,14 +64,11 @@ $('input:checkbox').click(function(){
 
         if ($(this).prop('checked') == true){
             checkedFlight = $(this).val();
-            airlineSelected.push(checkedFlight);
-            console.log(airlineSelected);
-                filteredData = data.filter(function (item) {
-                    return item.name == checkedFlight;
-                });
-
+            filteredData = data.filter(function (item) {
+                return item.name == checkedFlight;
+            });
+            console.log("filtered data goes here");
             console.log(filteredData);
-            // $("#result").html("");
             for(let i=0;i<filteredData.length;i++){
                 
                 $("#result").append(
