@@ -2,49 +2,49 @@ var data =
 [
     {
         name: "Jet Airways",
-        duration: "2hour10min",
+        duration: "100mins",
         price: 3400,
 
     },
     {
         name: "Air India",
-        duration: "1hour10min",
-        price: 2300,
+        duration: "120mins",
+        price: 7300,
 
     },
     {
         name: "Indigo",
-        duration: "1hour10min",
-        price: 1800,
+        duration: "110mins",
+        price: 5300,
 
     },
     {
         name: "Indigo",
-        duration: "5hour40min",
+        duration: "140mins",
         price: 9000,
 
     },
     {
         name: "Indigo",
-        duration: "3hour50min",
-        price: 3300,
+        duration: "250mins",
+        price: 4500,
 
     },
     {
         name: "Air India",
-        duration: "3hour30min",
+        duration: "130mins",
         price: 3000,
 
     },
     {
         name: "Air India",
-        duration: "1hour40min",
+        duration: "145mins",
         price: 2900,
 
     },
     {
         name: "Jet Airways",
-        duration: "21hour10min",
+        duration: "140mins",
         price: 6400,
 
     },
@@ -72,7 +72,7 @@ $('input:checkbox').click(function(){
             for(let i=0;i<filteredData.length;i++){
                 $("#result").append(
 
-                    '<div class="row">'+
+                    '<div class="row flight-data-row">'+
 
                         '<div class="col-sm-4"> '+
                             '<div class="flight-name">'+
@@ -96,14 +96,27 @@ $('input:checkbox').click(function(){
 
         }
         else{
-        
-            filteredData = data.filter(function (item) {
-                return item;
-            });
-            console.log(filteredData);
+            console.log("else block");
+            console.log($(this).val());
+
+            // filteredData = data.filter(function (item) {
+            //     return item;
+            // });
+            // console.log(filteredData);
             
         }
+
+
+        if(($("input:checkbox:checked").length === 0)){
+            console.log("all unchecked");
+            appendData();
+            return false;
+
+        }
     }); 
+
+    
+    
 });
 
 
@@ -112,7 +125,7 @@ function appendData(){
 
         $("#result").append(
 
-            '<div class="row">'+
+            '<div class="row flight-data-row">'+
 
                 '<div class="col-sm-4"> '+
                     '<div class="flight-name">'+
