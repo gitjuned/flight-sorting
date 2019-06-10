@@ -51,10 +51,11 @@ var data =
     },
 ]
 
-function appendData(){
+
+function appendData(array){
     console.log("inside iffi");
     $("#result").empty();
-    for(let i=0;i<data.length;i++){
+    for(let i=0;i<array.length;i++){
 
         $("#result").append(
 
@@ -62,17 +63,17 @@ function appendData(){
 
                 '<div class="col-sm-4"> '+
                     '<div class="flight-name">'+
-                        '<p>'+data[i].name+'</p>'+
+                        '<p>'+array[i].name+'</p>'+
                     '</div>'+
                 '</div>'+
                 '<div class="col-sm-4"> '+
                     '<div class="flight-duration">'+
-                        '<p>'+data[i].duration+'</p>'+
+                        '<p>'+array[i].duration+'</p>'+
                     '</div>'+
                 '</div>'+
                 '<div class="col-sm-4"> '+
                     '<div class="flight-price">'+
-                        '<p>'+data[i].price+'</p>'+
+                        '<p>'+array[i].price+'</p>'+
                     '</div>'+
                 '</div>'+
 
@@ -81,17 +82,10 @@ function appendData(){
     }
 };
 
-appendData();
-
-var tempArray = [];
-var totalCheckedFlights = [];
-var totalUnCheckedFlights = [];
-var airlineSelected = [];
-var checkedFlight;
-
-
+appendData(data);
 
 $('input:checkbox').click(function(){
+    var checkedFlight;
     $("#result").html("");
     $("input:checkbox").each(function(){
 
@@ -102,11 +96,10 @@ $('input:checkbox').click(function(){
             });
             console.log("filtered data goes here");
             console.log(filteredData);
+            // appendData(filteredData);
             for(let i=0;i<filteredData.length;i++){
                 $("#result").append(
-
                     '<div class="row flight-data-row">'+
-
                         '<div class="col-sm-4"> '+
                             '<div class="flight-name">'+
                                 '<p>'+filteredData[i].name+'</p>'+
@@ -122,7 +115,6 @@ $('input:checkbox').click(function(){
                                 '<p>'+filteredData[i].price+'</p>'+
                             '</div>'+
                         '</div>'+
-
                     '</div>'    
                 )
             }
@@ -133,7 +125,7 @@ $('input:checkbox').click(function(){
         }
         if(($("input:checkbox:checked").length === 0)){
             console.log("all unchecked block");
-            appendData();
+            appendData(data);
             return false;
         }
     });   
@@ -148,44 +140,19 @@ function sortByTime(){
     var filteredData = data.filter(function (item) {
         return item.duration >= time;
     });
-    for(let i=0;i<filteredData.length;i++){
-        $("#result").append(
-            '<div class="row flight-data-row">'+
-
-                '<div class="col-sm-4"> '+
-                    '<div class="flight-name">'+
-                        '<p>'+filteredData[i].name+'</p>'+
-                    '</div>'+
-                '</div>'+
-                '<div class="col-sm-4"> '+
-                    '<div class="flight-duration">'+
-                        '<p>'+filteredData[i].duration+'</p>'+
-                    '</div>'+
-                '</div>'+
-                '<div class="col-sm-4"> '+
-                    '<div class="flight-price">'+
-                        '<p>'+filteredData[i].price+'</p>'+
-                    '</div>'+
-                '</div>'+
-
-            '</div>'    
-        )
-    }
-    console.log(filteredData);  
+    appendData(filteredData);
 }
-
 
 $("#duration").keyup(function(){
     if(($(this).val()) == ""){
         console.log("hey there");
-        appendData();
+        appendData(data);
     }
 });
 
 $('.duration-btn').click(function(){
     sortByTime();
 });
-
 
 function sortByPrice(){
     $("#result").empty();
