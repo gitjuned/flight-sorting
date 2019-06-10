@@ -27,7 +27,7 @@ var data =
     {
         name: "Indigo",
         duration: "3hour50min",
-        price: 3000,
+        price: 3300,
 
     },
     {
@@ -70,7 +70,6 @@ $('input:checkbox').click(function(){
             console.log("filtered data goes here");
             console.log(filteredData);
             for(let i=0;i<filteredData.length;i++){
-                
                 $("#result").append(
 
                     '<div class="row">'+
@@ -95,14 +94,13 @@ $('input:checkbox').click(function(){
                 )
             }
 
-            }
-
+        }
         else{
         
-            // var filteredData = data.filter(function (item) {
-            //     return item;
-            // });
-            // console.log("oops");
+            filteredData = data.filter(function (item) {
+                return item;
+            });
+            console.log(filteredData);
             
         }
     }); 
