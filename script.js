@@ -14,8 +14,32 @@ var data =
     },
     {
         name: "Indigo",
-        duration: "3hour10min",
-        price: 1000,
+        duration: "1hour10min",
+        price: 1800,
+
+    },
+    {
+        name: "Indigo",
+        duration: "5hour40min",
+        price: 9000,
+
+    },
+    {
+        name: "Indigo",
+        duration: "3hour50min",
+        price: 3000,
+
+    },
+    {
+        name: "Air India",
+        duration: "3hour30min",
+        price: 3000,
+
+    },
+    {
+        name: "Air India",
+        duration: "1hour40min",
+        price: 2900,
 
     },
     {
@@ -24,11 +48,7 @@ var data =
         price: 6400,
 
     },
-
 ]
-
-// console.log("Array of Overall Data");
-// console.log(data);
 
 
 var tempArray = [];
@@ -39,54 +59,56 @@ var checkedFlight;
 var filteredData=[];
 
 $('input:checkbox').click(function(){
-        $("#result").html("");
-        $("input:checkbox").each(function(){
+    $("#result").html("");
+    $("input:checkbox").each(function(){
 
-            if ($(this).prop('checked') == true){
-                checkedFlight = $(this).val();
-
+        if ($(this).prop('checked') == true){
+            checkedFlight = $(this).val();
+            airlineSelected.push(checkedFlight);
+            console.log(airlineSelected);
                 filteredData = data.filter(function (item) {
                     return item.name == checkedFlight;
                 });
-                console.log("****** FILTERED");
-                console.log(filteredData);
-                // $("#result").append("hey there");
-                $("#result").html("");
-                for(let i=0;i<filteredData.length;i++){
-                    
-                    $("#result").append(
 
-                        '<div class="row">'+
-
-                            '<div class="col-sm-4"> '+
-                                '<div class="flight-name">'+
-                                    '<p>'+filteredData[i].name+'</p>'+
-                                '</div>'+
-                            '</div>'+
-                            '<div class="col-sm-4"> '+
-                                '<div class="flight-duration">'+
-                                    '<p>'+filteredData[i].duration+'</p>'+
-                                '</div>'+
-                            '</div>'+
-                            '<div class="col-sm-4"> '+
-                                '<div class="flight-price">'+
-                                    '<p>'+filteredData[i].price+'</p>'+
-                                '</div>'+
-                            '</div>'+
-
-                        '</div>'    
-                    )
-                }
-
-            }
-            else{
-                var filteredData = data.filter(function (item) {
-                    return item;
-                });
-                console.log("oops");
+            console.log(filteredData);
+            // $("#result").html("");
+            for(let i=0;i<filteredData.length;i++){
                 
+                $("#result").append(
+
+                    '<div class="row">'+
+
+                        '<div class="col-sm-4"> '+
+                            '<div class="flight-name">'+
+                                '<p>'+filteredData[i].name+'</p>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="col-sm-4"> '+
+                            '<div class="flight-duration">'+
+                                '<p>'+filteredData[i].duration+'</p>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="col-sm-4"> '+
+                            '<div class="flight-price">'+
+                                '<p>'+filteredData[i].price+'</p>'+
+                            '</div>'+
+                        '</div>'+
+
+                    '</div>'    
+                )
             }
-        }); 
+
+            }
+
+        else{
+        
+            // var filteredData = data.filter(function (item) {
+            //     return item;
+            // });
+            // console.log("oops");
+            
+        }
+    }); 
 });
 
 
@@ -121,17 +143,17 @@ function appendData(){
 
 appendData();
  
-var jetFlights = data.filter(item => item.name == "Jet Airways");
-console.log("Jet Airways Flights");
-console.log(jetFlights);
+// var jetFlights = data.filter(item => item.name == "Jet Airways");
+// console.log("Jet Airways Flights");
+// console.log(jetFlights);
 
-var airIndiaFlights = data.filter(item => item.name == "Air India");
-console.log("Air India Flights");
-console.log(airIndiaFlights);
+// var airIndiaFlights = data.filter(item => item.name == "Air India");
+// console.log("Air India Flights");
+// console.log(airIndiaFlights);
 
-var indigoFlights = data.filter(item => item.name == "Indigo");
-console.log("Indigo Flights");
-console.log(indigoFlights);
+// var indigoFlights = data.filter(item => item.name == "Indigo");
+// console.log("Indigo Flights");
+// console.log(indigoFlights);
 
 
 // var jet2 = data.filter(function (item) {
