@@ -3,59 +3,73 @@ var data =
 [
     {
         name: "Jet Airways",
-        duration: "100mins",
+        duration: 100,
         price: 3400,
 
     },
     {
         name: "Air India",
-        duration: "120mins",
+        duration: 120,
         price: 7300,
 
     },
     {
         name: "Indigo",
-        duration: "110mins",
+        duration: 110,
         price: 5300,
 
     },
     {
         name: "Indigo",
-        duration: "140mins",
+        duration: 140,
         price: 9000,
 
     },
     {
         name: "Indigo",
-        duration: "250mins",
+        duration: 250,
         price: 4500,
 
     },
     {
         name: "Air India",
-        duration: "130mins",
+        duration: 130,
         price: 3000,
 
     },
     {
         name: "Air India",
-        duration: "145mins",
+        duration: 145,
         price: 2900,
 
     },
     {
         name: "Jet Airways",
-        duration: "140mins",
+        duration: 140,
         price: 6400,
 
     },
 ]
 
-
 function appendData(array){
-    console.log("inside iffi");
     $("#result").empty();
+    var num;
+    var hours;
+    var rhours; 
+    var minutes;
+    var rminutes;
+
     for(let i=0;i<array.length;i++){
+        function timeConvert(n) {
+            num = n;
+            hours = (num / 60);
+            rhours = Math.floor(hours);
+            minutes = (hours - rhours) * 60;
+            rminutes = Math.round(minutes);
+            // return num + " minutes = " + rhours + " hour(s) and " + rminutes + " minute(s).";
+            return rhours + " hr(s) and " + rminutes + " min(s)";
+        }
+        var formattedTime = timeConvert(array[i].duration)
 
         $("#result").append(
 
@@ -68,7 +82,7 @@ function appendData(array){
                 '</div>'+
                 '<div class="col-sm-4"> '+
                     '<div class="flight-duration">'+
-                        '<p>'+array[i].duration+'</p>'+
+                        '<p>'+formattedTime+'</p>'+                        
                     '</div>'+
                 '</div>'+
                 '<div class="col-sm-4"> '+
@@ -143,13 +157,6 @@ function sortByTime(){
     appendData(filteredData);
 }
 
-$("#duration").keyup(function(){
-    if(($(this).val()) == ""){
-        console.log("hey there");
-        appendData(data);
-    }
-});
-
 $('.duration-btn').click(function(){
     sortByTime();
 });
@@ -189,6 +196,21 @@ function sortByPrice(){
 
 $('.price-btn').click(function(){
     sortByPrice();
+});
+
+$('.clear-btn').click(function(){
+    
+    console.log($('input').val());
+
+    $("input").each(function(){
+        ($(this).val(""));
+    }); 
+
+    $("input:checkbox").each(function(){
+        $(this).prop("checked", false);
+    }); 
+
+    appendData(data);
 });
 
 
